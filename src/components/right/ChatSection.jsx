@@ -65,7 +65,7 @@ export default function ChatSection({messages, lastMessageRef}) {
     //         body: `Fixie glossier.`,
     //         id: 16
     //     } 
-    // ]
+    // ],
     
     return (
         <div className="chatSection">
