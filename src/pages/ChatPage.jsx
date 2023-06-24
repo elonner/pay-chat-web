@@ -32,7 +32,11 @@ export default function ChatPage({ socket }) {
         // </div>
         <div className="mainPage">
             <Left />
-            <Right messages={messages} />
+            <Right 
+                messages={messages}
+                lastMessageRef={lastMessageRef} 
+                socket={socket}
+            />
       </div>
     );
 }

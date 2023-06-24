@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-export default function ChatSend() {
+export default function ChatSend({socket}) {
     const [message, setMessage] = useState('');
     const textAreaRef = useRef(null);
     const chatSendRef = useRef(null);
@@ -32,14 +32,21 @@ export default function ChatSend() {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             if (message === '') return;
-            handleSend();
+            handleSendMessage();
         }
     }
 
-    function handleSend() {
+    function handleSendMessage() {
+        if (message.trim() && localStorage.getItem('username')) {
+            socket.emit('message', {
+                body: message,
+                username: localStorage.getItem('username'),
+                id: `${socket.id}${Math.random()}`,
+                socketId: socket.id,
+            });
+        }
         setMessage('');
-        alert('send');
-    }
+    };
 
     return (
         <div ref={chatSendRef} className="chatSend">
@@ -53,8 +60,8 @@ export default function ChatSend() {
                     placeholder="Type something..."
                     className="msgInput"
                 />
-                <i 
-                    onClick={handleSend} 
+                <i
+                    onClick={handleSendMessage}
                     className="send fa-solid fa-circle-up fa-2xl"
                 ></i>
             </div>
