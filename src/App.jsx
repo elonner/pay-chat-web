@@ -1,4 +1,4 @@
-import './App.css';
+import './pages/ChatPage.css';
 import socketIO from 'socket.io-client';
 import {Routes, Route} from 'react-router-dom';
 import { useState } from 'react';
@@ -10,18 +10,15 @@ const socket = socketIO.connect('http://localhost:4000');
 
 export default function App() {
   const [username, setUsername] = useState('');
-
-  function logIn(username) {
-    setUsername(username);
-  }
    
   return (
     <main className="App">
       { username === '' ?
-        <HomePage logIn={logIn} socket={socket} />
+        <HomePage setUsername={setUsername} socket={socket} />
         :
         <Routes>
           <Route path="/chat" element={<ChatPage socket={socket} />} />
+          <Route path="/*" element={<ChatPage socket={socket} />} />
         </Routes>
       }
     </main>
