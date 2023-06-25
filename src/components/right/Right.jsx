@@ -1,13 +1,14 @@
 import ChatHeader from './ChatHeader';
-import ChatSection from './ChatSection';
-import ChatSend from './ChatSend';
+import ChatBody from './ChatBody';
+import ChatFooter from './ChatFooter';
+import './Right.css';
 
 export default function Right({socket, messages}) {
     return (
         <div className='right'>
             <ChatHeader />
-            <ChatSection messages={messages} />
-            <ChatSend socket={socket}/>
+            <ChatBody messages={messages} />
+            <ChatFooter socket={socket}/>
         </div>
     );
 }

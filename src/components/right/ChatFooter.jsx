@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 
-export default function ChatSend({socket}) {
+export default function ChatFooter({socket}) {
     const [message, setMessage] = useState('');
     const textAreaRef = useRef(null);
-    const chatSendRef = useRef(null);
+    const chatFooterRef = useRef(null);
     const msgInputContainerRef = useRef(null);
     const innerMargin = 20;
-    const outerMargin = 151;
+    const outerMargin = 61;
 
     useEffect(() => {
         if (textAreaRef?.current) {
@@ -19,8 +19,14 @@ export default function ChatSend({socket}) {
 
             const innerHeight = scrollHeight + innerMargin;
             const outerHeight = scrollHeight + outerMargin;
-            chatSendRef.current.style.height = `${outerHeight}px`;
-            msgInputContainerRef.current.style.height = `${innerHeight}px`;
+
+            if (outerHeight < 375) {
+                chatFooterRef.current.style.height = `${outerHeight}px`;
+                msgInputContainerRef.current.style.height = `${innerHeight}px`;
+                textAreaRef.current.style.marginBottom = '';
+            } else {
+                textAreaRef.current.style.marginBottom = '10px';
+            }
         }
     }, [textAreaRef, message]);
 
@@ -44,12 +50,13 @@ export default function ChatSend({socket}) {
                 id: `${socket.id}${Math.random()}`,
                 socketId: socket.id,
             });
+            console.log(message);
         }
         setMessage('');
     };
 
     return (
-        <div ref={chatSendRef} className="chatSend">
+        <div ref={chatFooterRef} className="chatFooter">
             <div ref={msgInputContainerRef} className="msgInputContainer">
                 <textarea
                     value={message}

@@ -1,3 +1,5 @@
+import './ProfNames.css';
+
 export default function ProfNames({person}) {
     const username = 'username';
 

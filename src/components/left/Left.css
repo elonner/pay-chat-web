@@ -1,0 +1,127 @@
+.left {
+    flex: 0.33;
+    border-right: 2px solid #9B9B9B;
+    display: flex;
+    flex-direction: column;
+}
+
+.profHeader {
+    height: 150px;
+    position: relative;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.logOut {
+    color: #9D8BCF;
+    font-size: 20px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.logOut:hover {
+    color: #75689b;
+    cursor: pointer;
+}
+
+.profHeader .profNames {
+    font-size: 20px;
+    line-height: 24px;
+    gap: 0.75rem;
+    position: absolute;
+    left: 33px;
+    top: 34px;
+}
+
+.profHeader .currUser h3 {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+.profHeader img {
+    height: 82px;
+}
+
+.conversations {
+    background: #F3F3F3;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.conversations::-webkit-scrollbar {
+    display: none;
+}
+
+.convoSection {
+    position: relative;
+    border-bottom: 1px solid #C7C7C7;
+    height: 115px;
+}
+
+.convoSection:hover {
+    background: #e6e6e6
+}
+
+.convoSection .profNames {
+    position: absolute;
+    left: 29px;
+    top: 25px;
+    color: #656565;
+}
+
+.convoSection .date {
+    color: #989898;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.check {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.check:hover {
+    color: #68a186;
+}
+
+.balanceFooter {
+    height: 90px; /*WHYYYY???*/
+    width: 100%;
+    border-top: 1px solid #D9D9D9;
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.balanceFooter h2 {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: 0.1em;
+    color: #80C6A4;
+}
+
+.balanceFooter button {
+    height: 50px;
+    width: 150px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    border-radius: 8px;
+    color: #9D8BCF;
+    border: 1px solid #9D8BCF;
+    background: rgba(0,0,0,0);
+    cursor: pointer;
+}
+
+.balanceFooter button:hover {
+    background-color: #F3F3F3;
+}

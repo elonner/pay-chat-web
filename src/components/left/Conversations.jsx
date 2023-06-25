@@ -1,4 +1,4 @@
-import ProfNames from '../ProfNames';
+import ProfNames from '../ProfNames/ProfNames';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import formatDate from '../../utilities/formatDate';

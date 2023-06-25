@@ -1,8 +1,7 @@
-import './pages/ChatPage.css';
 import socketIO from 'socket.io-client';
 import {Routes, Route} from 'react-router-dom';
 import { useState } from 'react';
-import HomePage from './pages/HomePage';
+import AuthPage from './pages/AuthPage';
 import ChatPage from './pages/ChatPage';
 
 // eslint-disable-next-line
@@ -14,7 +13,7 @@ export default function App() {
   return (
     <main className="App">
       { username === '' ?
-        <HomePage setUsername={setUsername} socket={socket} />
+        <AuthPage setUsername={setUsername} socket={socket} />
         :
         <Routes>
           <Route path="/chat" element={<ChatPage socket={socket} />} />

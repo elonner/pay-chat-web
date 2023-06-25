@@ -1,0 +1,21 @@
+.profNames {
+    display: flex;
+    gap: 0.5rem;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    align-items: center;
+    letter-spacing: 0.1rem;
+    color: #473f5e;
+}
+
+.profNames h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.profNames img {
+    height: 65px;
+    border-radius: 50%;
+}

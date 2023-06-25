@@ -1,5 +1,4 @@
-import ProfNames from '../ProfNames';
-import { Link } from 'react-router-dom';
+import ProfNames from '../ProfNames/ProfNames';
 
 export default function ProfHeader() {
     const currPerson = {

@@ -1,4 +1,4 @@
-import ProfNames from '../ProfNames';
+import ProfNames from '../ProfNames/ProfNames';
 
 export default function ChatHeader() {
     const currPerson = {

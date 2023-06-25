@@ -1,0 +1,141 @@
+.right {
+    flex: 0.67;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatHeader {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.chatHeader .profNames {
+    color: #656565;
+    margin: 20px 0;
+}
+
+.paySection {
+    display: flex;
+    gap: 1rem;
+    right: 1rem;
+}
+
+.paySection > * {
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 42px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.payInput {
+    width: 150px;
+    text-align: center;
+    background: #F9F9F9;
+    border: 1px solid #D9D9D9;
+}
+
+.payBtn {
+    width: 115px;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    color: white;
+    background: #CA6262;
+    border: none;
+}
+
+.payBtn:hover {
+    background: #ac5353;
+}
+
+.chatBody {
+    background: #F9F9F9;
+    padding: 0 15px;
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.chatBody::-webkit-scrollbar {
+    display: none;
+}
+
+.msgBody {
+    border-radius: 10px;
+    max-width: 500px;
+    width: fit-content;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.user {
+    background-color: #75689b;
+    color: white;
+    justify-self: flex-end;
+    margin: 10px 0 2px auto;
+}
+
+.msgUsername {
+    font-size: small;
+    color: #656565;
+    margin: 0 0 2px 10px;
+}
+
+.other {
+    background-color: #cacaca;
+}
+
+.chatFooter {
+    border-top: 1px solid #D9D9D9;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.msgInputContainer {
+    width: 92%;
+    display: flex;
+    align-items: center;
+    background: #F9F9F9;
+    border: 1px solid #D9D9D9;
+    border-radius: 25px;
+}
+
+.msgInput {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    max-height: 300px;
+    flex-grow: 1;
+    border: none;
+    background: rgba(0,0,0,0);
+    padding-left: 1rem;
+    outline: none;
+    resize: none;
+    overflow-y: scroll;
+}
+
+.msgInput::-webkit-scrollbar {
+    display: none;
+}
+
+.send {
+    margin-right: 0.5rem;
+    width: 10%;
+    height: 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+
+.send:hover {
+    color: #68a186;
+}
+
