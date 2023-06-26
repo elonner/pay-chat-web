@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
+import { getUser } from '../../utilities/users-service';
 
-export default function ChatFooter({socket}) {
+export default function ChatFooter({socket, activeConvo}) {
     const [message, setMessage] = useState('');
     const textAreaRef = useRef(null);
     const chatFooterRef = useRef(null);
@@ -43,14 +44,16 @@ export default function ChatFooter({socket}) {
     }
 
     function handleSendMessage() {
-        if (message.trim() && localStorage.getItem('username')) {
+        if (message.trim()) {
             socket.emit('message', {
                 body: message,
-                username: localStorage.getItem('username'),
+                sender: getUser(),
                 id: `${socket.id}${Math.random()}`,
                 socketId: socket.id,
             });
-            console.log(message);
+            if (activeConvo) {
+                
+            }
         }
         setMessage('');
     };

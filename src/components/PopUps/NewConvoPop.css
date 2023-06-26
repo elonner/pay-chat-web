@@ -1,0 +1,25 @@
+.newConvoPop {
+    height: 250px;
+    width: 500px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 1;
+    border-radius: 10px;
+    border: 2px solid #9D8BCF;
+    filter: drop-shadow(0 0 5px #828282);
+}
+
+.cancel {
+    color: #CA6262;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+
+.cancel:hover {
+    color: #ac5353;
+    cursor: pointer;
+}

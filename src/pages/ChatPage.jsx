@@ -5,12 +5,10 @@ import './ChatPage.css';
 
 export default function ChatPage({ socket }) {
     const [messages, setMessages] = useState([]);
+    const [activeConvo, setActiveConvo] =  useState({});
+    const activeConvoRef = useRef({});
     const lastMessageRef = useRef(null);
 
-    // useEffect(() => {
-    //     setMessages([...messages, {body: 'yo \n my \n', sender: 'other', id: 123}])
-    // }, []);
-    
     useEffect(() => {
         socket.on('messageResponse', data => setMessages([...messages, data]));
     }, [socket, messages]);
@@ -21,11 +19,16 @@ export default function ChatPage({ socket }) {
     
     return (
         <div className="mainPage">
-            <Left />
+            <Left 
+                activeConto={activeConvo}
+                setActiveConvo={setActiveConvo}
+                activeConvoRef={activeConvoRef}
+            />
             <Right 
                 messages={messages}
                 lastMessageRef={lastMessageRef} 
                 socket={socket}
+                activeConto={activeConvo}
             />
       </div>
     );

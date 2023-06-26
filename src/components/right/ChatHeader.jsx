@@ -1,6 +1,6 @@
 import ProfNames from '../ProfNames/ProfNames';
 
-export default function ChatHeader() {
+export default function ChatHeader({activeConvo}) {
     const currPerson = {
         username: 'other_guy',
         first: 'First',

@@ -11,6 +11,7 @@ export async function signUp(userData) {
     return getUser();
 }
 
+
 export async function login(credentials) {
     // Delegate the AJAX request to the users-api.js
     // module.
@@ -21,6 +22,7 @@ export async function login(credentials) {
 
 export function logOut() {
     localStorage.removeItem('token');
+    window.location.reload(true);
 }
 
 export function getToken() {
@@ -37,9 +39,13 @@ export function getToken() {
     return token;
 }
 
-export function getUser() {
-    const token = getToken();
-    return token ? JSON.parse(atob(token.split('.')[1])).user : null;
+export function getUser(id=null) {
+    if (id) {
+        return usersAPI.getOne(id);
+    } else {
+        const token = getToken();
+        return token ? JSON.parse(atob(token.split('.')[1])).user : null;
+    }
 }
 
 

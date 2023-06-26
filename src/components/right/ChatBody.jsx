@@ -1,10 +1,12 @@
+import {getUser} from '../../utilities/users-service';
+
 export default function ChatBody({messages, lastMessageRef}) {
     
     return (
         <div className="chatBody">
             {messages?.map((message) => {
                 return (
-                    message.username === localStorage.getItem('username') ?
+                    message.sender._id === getUser()._id ?
                     (
                     //This shows messages sent from you
                     <div className="msgBody user" key={message.id}>
@@ -13,7 +15,7 @@ export default function ChatBody({messages, lastMessageRef}) {
                     ) : (
                     //This shows messages received by you
                     <div className="otherMsg" key={message.id}>
-                        <p className="msgUsername">{message.username}</p>
+                        <p className="msgUsername">{message.sender.username}</p>
                         <div className="msgBody other">
                             <p>{message.body}</p>
                         </div>

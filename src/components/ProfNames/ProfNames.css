@@ -17,5 +17,8 @@
 
 .profNames img {
     height: 65px;
+    width: 65px;
+    object-fit: cover;
     border-radius: 50%;
+    border: 2px solid #68a186;
 }
