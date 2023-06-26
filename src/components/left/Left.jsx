@@ -8,7 +8,7 @@ export default function Left({activeConvo, setActiveConvo, activeConvoRef}) {
         <div className='left'>
             <ProfHeader />
             <Conversations 
-                activeConto={activeConvo}
+                activeConvo={activeConvo}
                 setActiveConvo={setActiveConvo}
                 activeConvoRef={activeConvoRef}
             />

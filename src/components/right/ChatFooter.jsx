@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { getUser } from '../../utilities/users-service';
+import { newMessage } from '../../utilities/conversations-api';
 
 export default function ChatFooter({socket, activeConvo}) {
     const [message, setMessage] = useState('');
@@ -52,7 +53,7 @@ export default function ChatFooter({socket, activeConvo}) {
                 socketId: socket.id,
             });
             if (activeConvo) {
-                
+                newMessage(activeConvo, {sender: getUser(), content: message});
             }
         }
         setMessage('');

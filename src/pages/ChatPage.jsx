@@ -14,13 +14,13 @@ export default function ChatPage({ socket }) {
     }, [socket, messages]);
 
     useEffect(() => {
-        lastMessageRef.current?.scrollIntoView({ behavior: 'smooth'})
+        lastMessageRef.current?.scrollIntoView({ behavior: 'smooth'});
     }, [messages]);
     
     return (
         <div className="mainPage">
             <Left 
-                activeConto={activeConvo}
+                activeConvo={activeConvo}
                 setActiveConvo={setActiveConvo}
                 activeConvoRef={activeConvoRef}
             />
@@ -28,7 +28,7 @@ export default function ChatPage({ socket }) {
                 messages={messages}
                 lastMessageRef={lastMessageRef} 
                 socket={socket}
-                activeConto={activeConvo}
+                activeConvo={activeConvo}
             />
       </div>
     );
