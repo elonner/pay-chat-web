@@ -7,8 +7,8 @@ import { getUser } from '../utilities/users-service';
 
 export default function ChatPage({ socket, currProf }) {
     //const [messages, setMessages] = useState([]);
-    //const [activeConvo, setActiveConvo] =  useState(null);
-    const activeConvoRef = useRef(null);
+    const [activeConvo, setActiveConvo] =  useState(null);
+    const [convos, setConvos] = useState([]);
     if (!currProf) return 'fetching data';
     // const lastMessageRef = useRef(null);
 
@@ -24,10 +24,14 @@ export default function ChatPage({ socket, currProf }) {
         <div className="mainPage">
             <Left 
                 currProf={currProf}
-                activeConvoRef={activeConvoRef}
-            />
+                convos={convos}
+                setConvos={setConvos}
+                activeConvo={activeConvo}
+                setActiveConvo={setActiveConvo}
+                />
             <Right 
                 currProf={currProf}
+                activeConvo={activeConvo}
                 //messages={messages}
                 //lastMessageRef={lastMessageRef} 
                 socket={socket}

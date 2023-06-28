@@ -1,16 +1,16 @@
 import ProfNames from '../ProfNames/ProfNames';
 import NewConvoPop from '../PopUps/NewConvoPop';
 import { getUser, logOut } from '../../utilities/users-service';
-import { getAll } from '../../utilities/users-api';
+import { getAllAvailable } from '../../utilities/users-api';
 import { useState, useEffect } from 'react';
 
-export default function ProfHeader({ currProf }) {
+export default function ProfHeader({ currProf, convos, setConvos, setActiveConvo }) {
     const [seen, setSeen] = useState(false);
     const [usernames, setUsernames] = useState([]);
 
     useEffect(() => {
         async function getUsernames() {
-            const allProfs = await getAll();
+            const allProfs = await getAllAvailable();
             setUsernames(allProfs.map(prof => prof.username));
         }
         getUsernames();
@@ -27,7 +27,15 @@ export default function ProfHeader({ currProf }) {
                 <ProfNames prof={currProf} />
                 <i onClick={togglePop} className="green-icon fa-regular fa-pen-to-square fa-2x"></i>
             </div>
-            {seen ? <NewConvoPop toggle={togglePop} usernames={usernames} /> : null}
+            {seen ?
+                <NewConvoPop
+                    toggle={togglePop}
+                    usernames={usernames}
+                    convos={convos}
+                    setConvos={setConvos}
+                    setActiveConvo={setActiveConvo}
+                />
+                : null}
         </div>
     );
 }

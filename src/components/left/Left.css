@@ -94,7 +94,7 @@
 }
 
 .activeConvo {
-    background-color: #75689b;
+    background-color: #8a7bb6;
 }
 
 .activeConvo .profNames,
@@ -103,7 +103,7 @@
 }
 
 .activeConvo:hover {
-    background-color: #75689b;
+    background-color: #8a7bb6;
 }
 
 .balanceFooter {

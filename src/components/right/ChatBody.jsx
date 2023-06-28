@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 
-export default function ChatBody({ socket, currProf, activeConvoRef }) {
+export default function ChatBody({ socket, currProf, activeConvo }) {
     const [messages, setMessages] = useState([]);
     const lastMessageRef = useRef(null);
 
     useEffect(() => {
-        if (activeConvoRef) {
-            setMessages(activeConvoRef.current.messages);
+        if (activeConvo) {
+            setMessages(activeConvo.messages);
         }
     }, []);
 

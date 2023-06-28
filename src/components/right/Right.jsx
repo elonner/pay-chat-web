@@ -3,12 +3,17 @@ import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
 import './Right.css';
 
-export default function Right({currProf, socket, messages, activeConvoRef}) {
+export default function Right({currProf, socket, messages, activeConvo}) {
     return (
         <div className='right'>
-            <ChatHeader activeConvoRef={activeConvoRef}/>
-            <ChatBody socket={socket} messages={messages} currProf={currProf} activeConvoRef={activeConvoRef} />
-            <ChatFooter socket={socket} currProf={currProf} activeConvoRef={activeConvoRef} />
+            {activeConvo ? 
+            <>
+                <ChatHeader activeConvo={activeConvo}/>
+                <ChatBody socket={socket} messages={messages} currProf={currProf} activeConvo={activeConvo} />
+                <ChatFooter socket={socket} currProf={currProf} activeConvo={activeConvo} />
+            </>
+            :
+            null}
         </div>
     );
 }

@@ -6,8 +6,7 @@ import { getAll } from '../../utilities/conversations-api';
 import { setActiveConvoAPI } from '../../utilities/users-api';
 import { getUser, getOther } from '../../utilities/users-service';
 
-export default function Conversations({ currProf, activeConvoRef }) {
-    const [convos, setConvos] = useState([]);
+export default function Conversations({ currProf, convos, setConvos, activeConvo, setActiveConvo }) {
     const activeDivRef = useRef(null);
 
     useEffect(() => {
@@ -16,13 +15,13 @@ export default function Conversations({ currProf, activeConvoRef }) {
             setConvos(allConvos);
         }
         getConvos();
-        activeConvoRef.current = currProf.activeConvo;
+        setActiveConvo(currProf.activeConvo)
     }, []);
 
     function selectConvo(convo) {
         return function (e) {
-            activeConvoRef.current = convo;
-            setActiveConvoAPI(getUser(), {activeConvo: convo});
+            setActiveConvo(convo);
+            setActiveConvoAPI(getUser(), { activeConvo: convo });
             const clickedDiv = e.currentTarget;
 
             clickedDiv.classList.add('activeConvo');
@@ -39,7 +38,10 @@ export default function Conversations({ currProf, activeConvoRef }) {
                 const formattedDate = formatDate(new Date(convo.updatedAt));
                 return (
                     <Link to="" key={convo._id}>
-                        <div onClick={selectConvo(convo)} className="convoSection">
+                        <div
+                            onClick={selectConvo(convo)}
+                            className={`convoSection ${convo._id === activeConvo._id ? "activeConvo" : ""}`}
+                        >
                             <p className="date">{formattedDate}</p>
                             <ProfNames prof={getOther(convo)} />
                             {/* {person.paymentConfirm ? <i className="green-icon fa-solid fa-check fa-3x"></i> : <></>} */}

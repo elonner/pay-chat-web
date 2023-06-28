@@ -38,7 +38,7 @@ export function getToken() {
     return token;
 }
 
-export function getUser(id=null) {
+export function getUser(id = null) {
     if (id) {
         return usersAPI.getOne(id);
     } else {
@@ -50,7 +50,7 @@ export function getUser(id=null) {
 export function getOther(convo) {
     if (!convo) return null;
     const user = getUser();
-    return convo.profiles.find(prof => prof.user._id !== user._id);
+    return convo.profiles.find(p => p.user !== user._id);
 }
 
 
