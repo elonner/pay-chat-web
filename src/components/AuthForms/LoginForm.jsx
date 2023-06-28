@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as usersService from '../../utilities/users-service';
+import { getOne } from '../../utilities/users-api';
 
 export default function LoginForm({ setUser }) {
     const [credentials, setCredentials] = useState({

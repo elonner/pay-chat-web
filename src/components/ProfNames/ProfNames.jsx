@@ -1,14 +1,21 @@
 import './ProfNames.css';
 import { getUser } from '../../utilities/users-service';
 
-export default function ProfNames({person}) {
+export default function ProfNames({ prof }) {
     return (
-        <div className={`profNames ${person._id === getUser()._id ? "currUser" : ""}`}>
-            <img src={person.imgUrl} alt="" className="profPic" />
-            <div className="names">
-                <h3 className="username">{person.username}</h3>
-                <p className="firstLast">{person.first} {person.last}</p>
-            </div>
-        </div>
+        <>
+            {prof ?
+                (
+                    <div className={`profNames ${prof.user._id === getUser()._id ? "currUser" : ""}`}>
+                        <img src={prof.imgUrl} alt="profPic" className="profPic" />
+                        <div className="names">
+                            <h3 className="username">{prof.username}</h3>
+                            <p className="firstLast">{prof.first} {prof.last}</p>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="profNames"></div>
+                )}
+        </>
     );
 }

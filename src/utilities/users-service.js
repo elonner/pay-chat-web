@@ -11,7 +11,6 @@ export async function signUp(userData) {
     return getUser();
 }
 
-
 export async function login(credentials) {
     // Delegate the AJAX request to the users-api.js
     // module.
@@ -46,6 +45,12 @@ export function getUser(id=null) {
         const token = getToken();
         return token ? JSON.parse(atob(token.split('.')[1])).user : null;
     }
+}
+
+export function getOther(convo) {
+    if (!convo) return null;
+    const user = getUser();
+    return convo.profiles.find(prof => prof.user._id !== user._id);
 }
 
 

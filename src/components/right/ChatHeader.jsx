@@ -1,17 +1,11 @@
 import ProfNames from '../ProfNames/ProfNames';
+import { getOther } from '../../utilities/users-service';
 
-export default function ChatHeader({activeConvo}) {
-    const currPerson = {
-        username: 'other_guy',
-        first: 'First',
-        last: 'Last',
-        img: 'https://img.myloview.com/canvas-prints/white-cat-kitten-kitty-icon-cute-kawaii-cartoon-round-character-funny-head-face-happy-valentines-day-pink-cheeks-baby-greeting-card-template-blue-background-isolated-flat-design-700-196364716.jpg'
-    }
-    
+export default function ChatHeader({activeConvoRef}) {
     return (
         <div>
             <div className='chatHeader'>
-                <ProfNames person={currPerson} />
+                <ProfNames prof={getOther(activeConvoRef?.current)} />
                 <div className="paySection">
                     <input className='payInput' type="text" placeholder="$00.00" />
                     <button className="payBtn">PAY</button>

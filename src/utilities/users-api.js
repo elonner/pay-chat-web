@@ -10,7 +10,7 @@ export async function getOne(id) {
 }
 
 export async function setActiveConvoAPI(user, convo) {
-    return sendRequest(`${BASE_URL}/${user._id}`, 'PUT', convo);
+    return sendRequest(`${BASE_URL}/${user._id}/setActiveConvo`, 'PUT', convo);
 }
 
 export async function signUp(userData) {

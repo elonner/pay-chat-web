@@ -1,8 +1,9 @@
 import { signUp } from '../../utilities/users-service';
+import { getOne } from '../../utilities/users-api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignUpForm({setUser}) {
+export default function SignUpForm({setUser }) {
     const [credentials, setCredentials] = useState({
         first: '',
         last: '',
@@ -33,7 +34,7 @@ export default function SignUpForm({setUser}) {
         } catch {
             // An error occurred
             // Probably due to a duplicate username
-            setError('Sign Up Failed - Try Again');
+            setError('Sign Up Failand ed - Try Again');
         }
     };
 

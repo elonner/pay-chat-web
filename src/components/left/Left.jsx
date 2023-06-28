@@ -3,13 +3,12 @@ import Conversations from './Conversations';
 import BalanceFooter from './BalanceFooter';
 import './Left.css';
 
-export default function Left({activeConvo, setActiveConvo, activeConvoRef}) {
+export default function Left({ currProf, activeConvoRef }) {
     return (
         <div className='left'>
-            <ProfHeader />
-            <Conversations 
-                activeConvo={activeConvo}
-                setActiveConvo={setActiveConvo}
+            <ProfHeader currProf={currProf} />
+            <Conversations
+                currProf={currProf}
                 activeConvoRef={activeConvoRef}
             />
             <BalanceFooter />

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { getUser } from '../../utilities/users-service';
 import { newMessage } from '../../utilities/conversations-api';
 
-export default function ChatFooter({socket, activeConvo}) {
+export default function ChatFooter({currProf, socket, activeConvoRef}) {
     const [message, setMessage] = useState('');
     const textAreaRef = useRef(null);
     const chatFooterRef = useRef(null);
@@ -47,13 +47,14 @@ export default function ChatFooter({socket, activeConvo}) {
     function handleSendMessage() {
         if (message.trim()) {
             socket.emit('message', {
-                body: message,
-                sender: getUser(),
-                id: `${socket.id}${Math.random()}`,
+                content: message,
+                //body: message,
+                sender: currProf,
+                //id: `${socket.id}${Math.random()}`,
                 socketId: socket.id,
             });
-            if (activeConvo) {
-                newMessage(activeConvo, {sender: getUser(), content: message});
+            if (activeConvoRef.current) {
+                newMessage(activeConvoRef.current, {sender: currProf, content: message});
             }
         }
         setMessage('');
