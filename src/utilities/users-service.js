@@ -50,7 +50,8 @@ export function getUser(id = null) {
 export function getOther(convo) {
     if (!convo) return null;
     const user = getUser();
-    return convo.profiles.find(p => p.user !== user._id);
+   // console.log(user._id, convo.profiles);
+    return convo.profiles.find(p => p.user._id !== user._id);
 }
 
 

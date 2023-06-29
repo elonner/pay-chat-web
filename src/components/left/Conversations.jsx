@@ -7,8 +7,6 @@ import { setActiveConvoAPI } from '../../utilities/users-api';
 import { getUser, getOther } from '../../utilities/users-service';
 
 export default function Conversations({ currProf, convos, setConvos, activeConvo, setActiveConvo }) {
-    const activeDivRef = useRef(null);
-
     useEffect(() => {
         async function getConvos() {
             const allConvos = await getAll();
@@ -19,31 +17,26 @@ export default function Conversations({ currProf, convos, setConvos, activeConvo
     }, []);
 
     function selectConvo(convo) {
-        return function (e) {
+        return () => {
             setActiveConvo(convo);
             setActiveConvoAPI(getUser(), { activeConvo: convo });
-            const clickedDiv = e.currentTarget;
-
-            clickedDiv.classList.add('activeConvo');
-            if (activeDivRef.current && activeDivRef.current !== clickedDiv) {
-                activeDivRef.current.classList.remove('activeConvo');
-            }
-            activeDivRef.current = clickedDiv;
         };
     }
 
+    console.log('HERE', currProf);
     return (
         <div className='conversations'>
-            {convos.sort((a, b) => b.updatedAt - a.updatedAt).map(convo => {
+            {convos.sort((a, b) => (new Date(b.updatedAt)) - (new Date(a.updatedAt))).map(convo => {
                 const formattedDate = formatDate(new Date(convo.updatedAt));
                 return (
                     <Link to="" key={convo._id}>
                         <div
                             onClick={selectConvo(convo)}
-                            className={`convoSection ${convo._id === activeConvo._id ? "activeConvo" : ""}`}
+                            className={`convoSection ${convo._id === activeConvo?._id ? "activeConvo" : ""}`}
                         >
                             <p className="date">{formattedDate}</p>
                             <ProfNames prof={getOther(convo)} />
+                            {/* {convo._id === activeConvo._id ? console.log(getOther(convo)) : null} */}
                             {/* {person.paymentConfirm ? <i className="green-icon fa-solid fa-check fa-3x"></i> : <></>} */}
                         </div>
                     </Link>

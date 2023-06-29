@@ -1,14 +1,17 @@
 import { useState, useEffect, useRef } from "react";
+import { getMessages } from "../../utilities/conversations-api";
 
 export default function ChatBody({ socket, currProf, activeConvo }) {
     const [messages, setMessages] = useState([]);
     const lastMessageRef = useRef(null);
 
     useEffect(() => {
-        if (activeConvo) {
-            setMessages(activeConvo.messages);
+        async function getMsgs() {
+            const allMessages = await getMessages(activeConvo._id);
+            setMessages(allMessages);
         }
-    }, []);
+        getMsgs();
+    }, [activeConvo]);
 
     useEffect(() => {
         socket.on('messageResponse', data => setMessages([...messages, data]));
@@ -25,15 +28,15 @@ export default function ChatBody({ socket, currProf, activeConvo }) {
                     message.sender._id === currProf._id ?
                         (
                             //This shows messages sent from you
-                            <div className="msgBody user" key={message._id}>
-                                <p>{message.body}</p>
+                            <div className="msgBody user" key={message?._id}>
+                                <p>{message.content}</p>
                             </div>
                         ) : (
                             //This shows messages received by you
-                            <div className="otherMsg" key={message._id}>
+                            <div className="otherMsg" key={message?._id}>
                                 <p className="msgUsername">{message.sender.username}</p>
                                 <div className="msgBody other">
-                                    <p>{message.body}</p>
+                                    <p>{message.content}</p>
                                 </div>
                             </div>
                         )

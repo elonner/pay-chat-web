@@ -13,6 +13,10 @@ export async function getOne(id) {
     return sendRequest(`${BASE_URL}/${id}`);
 }
 
-export async function newMessage(id, message) {
-    return sendRequest(`${BASE_URL}/${id}/newMsg`, 'POST', message);
+export async function newMessage(message) {
+    return sendRequest(`${BASE_URL}/${message.conversation._id}/newMsg`, 'POST', {message});
+}
+
+export async function getMessages(id) {
+    return sendRequest(`${BASE_URL}/${id}/messages`);
 }

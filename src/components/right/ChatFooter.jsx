@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { getUser } from '../../utilities/users-service';
+import { getOther } from '../../utilities/users-service';
 import { newMessage } from '../../utilities/conversations-api';
 
-export default function ChatFooter({currProf, socket, activeConvoRef}) {
+export default function ChatFooter({currProf, socket, activeConvo}) {
     const [message, setMessage] = useState('');
     const textAreaRef = useRef(null);
     const chatFooterRef = useRef(null);
@@ -10,6 +10,7 @@ export default function ChatFooter({currProf, socket, activeConvoRef}) {
     const innerMargin = 20;
     const outerMargin = 61;
 
+    // enlarges text input
     useEffect(() => {
         if (textAreaRef?.current) {
             // We need to reset the height momentarily to get the correct scrollHeight for the textarea
@@ -46,16 +47,14 @@ export default function ChatFooter({currProf, socket, activeConvoRef}) {
 
     function handleSendMessage() {
         if (message.trim()) {
-            socket.emit('message', {
-                content: message,
-                //body: message,
+            const msgObj = {
                 sender: currProf,
-                //id: `${socket.id}${Math.random()}`,
-                socketId: socket.id,
-            });
-            if (activeConvoRef.current) {
-                newMessage(activeConvoRef.current, {sender: currProf, content: message});
+                recipient: getOther(activeConvo),
+                conversation: activeConvo,
+                content: message
             }
+            socket.emit('message', {...msgObj, socketId: socket.id});
+            newMessage(msgObj);
         }
         setMessage('');
     };

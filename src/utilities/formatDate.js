@@ -3,7 +3,7 @@ export default function formatDate(date) {
         return 'now';
     } else if (new Date() - date < 86400000) {
         return getTime(date);
-    } else if (new Date() - date < 86400000*2) {
+    } else if ((new Date()).getDay() - date.getDay() === 1) {
         return 'yesterday';
     } else if (new Date() - date < 604800000) {
         return getDayOfWeek(date);
