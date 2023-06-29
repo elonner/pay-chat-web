@@ -23,7 +23,7 @@ export default function Conversations({ currProf, convos, setConvos, activeConvo
         };
     }
 
-    console.log('HERE', currProf);
+    // console.log('HERE', currProf);
     return (
         <div className='conversations'>
             {convos.sort((a, b) => (new Date(b.updatedAt)) - (new Date(a.updatedAt))).map(convo => {
