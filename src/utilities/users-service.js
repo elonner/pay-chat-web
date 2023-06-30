@@ -4,6 +4,7 @@
 // for making AJAX requests to the server.
 
 import * as usersAPI from './users-api';
+import { formatDate } from './formatDate';
 
 export async function signUp(userData) {
     const token = await usersAPI.signUp(userData);
@@ -54,4 +55,8 @@ export function getOther(convo) {
     return convo.profiles.find(p => p.user._id !== user._id);
 }
 
-
+export function getRecDate(messages, convo) {
+    const filteredMsgs = messages.filter(m => m.conversation._id === convo._id);
+    if (filteredMsgs.length) return new Date(filteredMsgs[filteredMsgs.length-1].updatedAt);
+    else return new Date(convo.updatedAt);
+}

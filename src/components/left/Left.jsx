@@ -3,7 +3,7 @@ import Conversations from './Conversations';
 import BalanceFooter from './BalanceFooter';
 import './Left.css';
 
-export default function Left({ currProf, convos, setConvos, activeConvo, setActiveConvo }) {
+export default function Left({ currProf, convos, setConvos, activeConvo, setActiveConvo, messages }) {
     return (
         <div className='left'>
             <ProfHeader 
@@ -18,6 +18,7 @@ export default function Left({ currProf, convos, setConvos, activeConvo, setActi
                 setConvos={setConvos}
                 activeConvo={activeConvo}
                 setActiveConvo={setActiveConvo}
+                messages={messages}
             />
             <BalanceFooter />
         </div>

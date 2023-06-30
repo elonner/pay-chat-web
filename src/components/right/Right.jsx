@@ -4,8 +4,7 @@ import ChatFooter from './ChatFooter';
 import { useState, useEffect, useRef } from 'react';
 import './Right.css';
 
-export default function Right({currProf, socket, activeConvo}) {
-    const [messages, setMessages] = useState([]);
+export default function Right({currProf, socket, activeConvo, messages, setMessages}) {
     const lastMessageRef = useRef(null);
 
     useEffect(() => {

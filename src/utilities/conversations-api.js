@@ -20,3 +20,7 @@ export async function newMessage(message) {
 export async function getMessages(id) {
     return sendRequest(`${BASE_URL}/${id}/messages`);
 }
+
+export async function getRecentDate(id) {
+    return sendRequest(`${BASE_URL}/${id}/recentDate`);
+}
