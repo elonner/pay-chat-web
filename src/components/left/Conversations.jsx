@@ -23,7 +23,8 @@ export default function Conversations({ currProf, convos, setConvos, activeConvo
         };
     }
 
-    // console.log('HERE', currProf);
+    useEffect(() => console.log("Real Active Convo", activeConvo?._id), [activeConvo]);
+
     return (
         <div className='conversations'>
             {convos.sort((a, b) => (new Date(b.updatedAt)) - (new Date(a.updatedAt))).map(convo => {

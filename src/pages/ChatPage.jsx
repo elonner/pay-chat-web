@@ -32,8 +32,6 @@ export default function ChatPage({ socket, currProf }) {
             <Right 
                 currProf={currProf}
                 activeConvo={activeConvo}
-                //messages={messages}
-                //lastMessageRef={lastMessageRef} 
                 socket={socket}
             />
       </div>
