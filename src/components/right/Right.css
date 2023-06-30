@@ -66,6 +66,7 @@
 }
 
 .msgBody {
+    white-space: pre;
     border-radius: 10px;
     max-width: 500px;
     width: fit-content;
@@ -88,6 +89,10 @@
 
 .other {
     background-color: #cacaca;
+}
+
+.bottomMsg {
+    padding-bottom: 10px;
 }
 
 .chatFooter {

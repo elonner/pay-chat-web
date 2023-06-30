@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { getMessages } from "../../utilities/conversations-api";
 
-export default function ChatBody({ socket, currProf, activeConvo, messages, setMessages }) {
-    const lastMessageRef = useRef(null);
+export default function ChatBody({ socket, currProf, activeConvo, messages, setMessages, lastMessageRef }) {
 
     useEffect(() => {
         async function getMsgs() {
@@ -21,10 +20,6 @@ export default function ChatBody({ socket, currProf, activeConvo, messages, setM
         })
     }, [socket, messages]);
 
-    useEffect(() => {
-        lastMessageRef.current?.scrollIntoView({ behavior: 'smooth'});
-    }, [messages]);
-
     return (
         <div className="chatBody">
             {!messages?.length ? null : messages.map((message) => {
@@ -39,13 +34,14 @@ export default function ChatBody({ socket, currProf, activeConvo, messages, setM
                             //This shows messages received by you
                             <div className="otherMsg" key={message._id}>
                                 <p className="msgUsername">{message.sender.username}</p>
-                                <div className="msgBody other">
+                                <div className="msgBody other" >
                                     <p>{message.content}</p>
                                 </div>
                             </div>
                         )
                 )
             })}
+            <div ref={lastMessageRef} className='bottomMsg' />
         </div>
     );
 }
