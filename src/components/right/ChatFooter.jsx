@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { getOther } from '../../utilities/users-service';
 import { newMessage } from '../../utilities/conversations-api';
 
-export default function ChatFooter({currProf, socket, activeConvo, messages, setMessages}) {
+export default function ChatFooter({currProf, socket, convos, setConvos, activeConvo, messages, setMessages}) {
     const [message, setMessage] = useState('');
     const textAreaRef = useRef(null);
     const chatFooterRef = useRef(null);
@@ -16,7 +16,6 @@ export default function ChatFooter({currProf, socket, activeConvo, messages, set
             // We need to reset the height momentarily to get the correct scrollHeight for the textarea
             textAreaRef.current.style.height = "0px";
             const scrollHeight = textAreaRef.current.scrollHeight;
-            console.log(textAreaRef.current.scrollHeight);
             // We then set the height directly, outside of the render loop
             // Trying to set this with state or a ref will product an incorrect value.
             textAreaRef.current.style.height = scrollHeight + "px";
@@ -55,7 +54,13 @@ export default function ChatFooter({currProf, socket, activeConvo, messages, set
                 content: message
             });
             socket.emit('message', {...msgObj, socketId: socket.id});
+            const idx = convos.findIndex(convo => convo._id === activeConvo._id);
+            const convoCopy = {...convos[idx]};
+            convoCopy.lastMsg = msgObj;
+            const convosCopy = [...convos];
+            convosCopy[idx] = convoCopy;
             setMessages([...messages, msgObj]);
+            setConvos(convosCopy);
         }
         setMessage('');
     };

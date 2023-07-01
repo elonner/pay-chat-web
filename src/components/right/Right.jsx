@@ -4,7 +4,7 @@ import ChatFooter from './ChatFooter';
 import { useState, useEffect, useRef } from 'react';
 import './Right.css';
 
-export default function Right({currProf, socket, activeConvo, messages, setMessages}) {
+export default function Right({currProf, socket, convos, setConvos, activeConvo, messages, setMessages}) {
     const lastMessageRef = useRef(null);
 
     useEffect(() => {
@@ -16,8 +16,21 @@ export default function Right({currProf, socket, activeConvo, messages, setMessa
             {activeConvo ? 
             <>
                 <ChatHeader activeConvo={activeConvo}/>
-                <ChatBody socket={socket} currProf={currProf} activeConvo={activeConvo} messages={messages} setMessages={setMessages} lastMessageRef={lastMessageRef}  />
-                <ChatFooter socket={socket} currProf={currProf} activeConvo={activeConvo} messages={messages} setMessages={setMessages} />
+                <ChatBody 
+                    socket={socket} 
+                    currProf={currProf} 
+                    activeConvo={activeConvo} 
+                    messages={messages} 
+                    setMessages={setMessages} 
+                    lastMessageRef={lastMessageRef}  />
+                <ChatFooter 
+                    socket={socket} 
+                    currProf={currProf} 
+                    convos={convos}
+                    setConvos={setConvos}
+                    activeConvo={activeConvo} 
+                    messages={messages} 
+                    setMessages={setMessages} />
             </>
             :
             null}

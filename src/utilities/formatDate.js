@@ -1,4 +1,5 @@
 export default function formatDate(date) {
+    //console.log(new Date(), date, new Date() - date);
     if (new Date() - date < 60000) {
         return 'now';
     } else if (new Date() - date < 86400000) {

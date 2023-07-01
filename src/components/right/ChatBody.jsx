@@ -1,25 +1,4 @@
-import { useState, useEffect, useRef } from "react";
-import { getMessages } from "../../utilities/conversations-api";
-
-export default function ChatBody({ socket, currProf, activeConvo, messages, setMessages, lastMessageRef }) {
-
-    useEffect(() => {
-        async function getMsgs() {
-            const allMessages = await getMessages(activeConvo._id);
-            setMessages(allMessages);
-        }
-        getMsgs();
-    }, [activeConvo]);
-
-    useEffect(() => {
-        socket.on('messageResponse', data => {
-            // if the messages convo is the recipient's active convo
-            if (data.conversation._id === data.recipient.activeConvo && currProf._id === data.recipient._id) {
-                setMessages([...messages, data]);
-            }
-        })
-    }, [socket, messages]);
-
+export default function ChatBody({ currProf, messages, lastMessageRef }) {
     return (
         <div className="chatBody">
             {!messages?.length ? null : messages.map((message) => {

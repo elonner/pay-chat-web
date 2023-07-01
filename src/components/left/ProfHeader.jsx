@@ -31,6 +31,7 @@ export default function ProfHeader({ currProf, convos, setConvos, setActiveConvo
                 <NewConvoPop
                     toggle={togglePop}
                     usernames={usernames}
+                    setUsernames={setUsernames}
                     convos={convos}
                     setConvos={setConvos}
                     setActiveConvo={setActiveConvo}

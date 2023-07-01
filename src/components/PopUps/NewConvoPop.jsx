@@ -3,7 +3,7 @@ import Select from 'react-select';
 import {useState} from 'react';
 import {newConvo} from '../../utilities/conversations-api';
 
-export default function NewConvoPop({toggle, usernames, convos, setConvos, setActiveConvo}) {
+export default function NewConvoPop({toggle, usernames, setUsernames, convos, setConvos, setActiveConvo}) {
     const [username, setUsername] = useState('');
     const [error, setError] = useState('');
 
@@ -20,6 +20,10 @@ export default function NewConvoPop({toggle, usernames, convos, setConvos, setAc
         try {
             const conversation = await newConvo({username});
             toggle(); //might remove
+            const idx = usernames.findIndex(u => u === username);
+            const usernamesCopy = [...usernames];
+            usernamesCopy.splice(idx, 1);
+            setUsernames(usernamesCopy);
             setActiveConvo(conversation);
             setConvos([...convos, conversation]);
         } catch (err) {
