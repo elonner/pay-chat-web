@@ -2,8 +2,8 @@ import ChatBar from '../components/ChatBar';
 import ChatBody from '../components/ChatBody';
 import ChatFooter from '../components/ChatFooter';
 import {useState, useEffect, useRef} from 'react';
-import Left from '../components/left/Left';
-import Right from '../components/right/Right';
+import Left from '../components/Left/Left';
+import Right from '../components/Right/Right';
 
 export default function ChatPage({ socket }) {
     const [messages, setMessages] = useState([]);
