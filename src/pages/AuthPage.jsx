@@ -8,12 +8,19 @@ export default function AuthPage({ setUser, setCurrProf }) {
 
   return (
     <main className="AuthPage">
-      <div>
-        <h3 onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</h3>
-      </div>
       {showLogin ? 
-        <LoginForm setUser={setUser} setCurrProf={setCurrProf} /> 
-      : <SignUpForm setUser={setUser} setCurrProf={setCurrProf} />}
+        <LoginForm 
+          setUser={setUser} 
+          setCurrProf={setCurrProf}
+          showLogin={showLogin}
+          setShowLogin={setShowLogin}
+        /> 
+      : <SignUpForm 
+          setUser={setUser} 
+          setCurrProf={setCurrProf}
+          showLogin={showLogin}
+          setShowLogin={setShowLogin}
+        />}
     </main>
   );
 }

@@ -6,7 +6,7 @@ export default function ProfNames({ prof }) {
         <>
             {prof ?
                 (
-                    <div className={`profNames ${prof.user._id === getUser()._id ? "currUser" : ""}`}>
+                    <div className={`profNames ${prof.user === getUser()._id ? "currUser" : ""}`}>
                         <img src={prof.imgUrl} alt="profPic" className="profPic" />
                         <div className="names">
                             <h3 className="username">{prof.username}</h3>

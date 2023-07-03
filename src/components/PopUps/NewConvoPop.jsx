@@ -27,6 +27,7 @@ export default function NewConvoPop({toggle, usernames, setUsernames, convos, se
             setActiveConvo(conversation);
             setConvos([...convos, conversation]);
         } catch (err) {
+
             console.log(err);
         }
     }
@@ -35,7 +36,7 @@ export default function NewConvoPop({toggle, usernames, setUsernames, convos, se
 
     return (
         <div className="newConvoPop">
-            <i onClick={handleCancel} className="cancel fa-solid fa-xmark fa-2x"></i>
+            <i onClick={handleCancel} className="cancel fa-solid fa-xmark fa-xl"></i>
             <h3>Select User</h3>
             <Select 
                 options={options} 

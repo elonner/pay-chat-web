@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as usersService from '../../utilities/users-service';
-import { getOne } from '../../utilities/users-api';
+import './AuthForms.css';
 
-export default function LoginForm({ setUser }) {
+export default function LoginForm({ setUser, showLogin, setShowLogin }) {
     const [credentials, setCredentials] = useState({
         username: '',
         password: ''
@@ -34,15 +34,23 @@ export default function LoginForm({ setUser }) {
     return (
         <div>
             <div className="form-container">
-                <form autoComplete="off" onSubmit={handleSubmit}>
-                    <label>Username</label>
-                    <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
-                    <label>Password</label>
-                    <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+                <form autoComplete="off" onSubmit={handleSubmit} className="form login">
+                    <label>Username:
+                        &nbsp;
+                        <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
+                    </label>
+                    <label>Password:
+                        &nbsp;
+                        <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+                    </label>
                     <button type="submit">LOG IN</button>
+                    <p className="switchForms">Don't have an account?
+                        &nbsp;
+                        <span onClick={() => setShowLogin(!showLogin)} className="switchLink">Sign Up</span>
+                    </p>
+                    <p className="error-message">{error}</p>
                 </form>
             </div>
-            <p className="error-message">&nbsp;{error}</p>
         </div>
     );
 }

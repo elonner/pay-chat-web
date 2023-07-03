@@ -1,9 +1,9 @@
 import { signUp } from '../../utilities/users-service';
-import { getOne } from '../../utilities/users-api';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './AuthForms.css';
 
-export default function SignUpForm({setUser }) {
+export default function SignUpForm({setUser, showLogin, setShowLogin }) {
     const [credentials, setCredentials] = useState({
         first: '',
         last: '',
@@ -38,24 +38,40 @@ export default function SignUpForm({setUser }) {
         }
     };
 
-    const disable = credentials.password !== credentials.confirm;
+    const disable = credentials.password !== credentials.confirm || credentials.password === '';
     return (
         <div>
             <div className="form-container">
-                <form autoComplete="off" onSubmit={handleSubmit}>
-                    <label>First Name</label>
-                    <input type="text" name="first" value={credentials.first} onChange={handleChange} required />
-                    <label>Last Name</label>
-                    <input type="text" name="last" value={credentials.last} onChange={handleChange} required />
-                    <label>Username</label>
-                    <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
-                    <label>Password</label>
-                    <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-                    <label>Confirm</label>
-                    <input type="password" name="confirm" value={credentials.confirm} onChange={handleChange} required />
-                    <label>Avatar URL</label>
-                    <input type="text" name="imgUrl" value={credentials.imgUrl} onChange={handleChange} required />
-                    <button type="submit" disabled={disable}>SIGN UP</button>
+                <form autoComplete="off" onSubmit={handleSubmit} className="form login">
+                    <label>First Name: 
+                        &nbsp;
+                        <input type="text" name="first" value={credentials.first} onChange={handleChange} required />
+                    </label>
+                    <label>Last Name:
+                        &nbsp;
+                        <input type="text" name="last" value={credentials.last} onChange={handleChange} required />
+                    </label>
+                    <label>Username:
+                        &nbsp;
+                        <input type="text" name="username" value={credentials.username} onChange={handleChange} required />
+                    </label>
+                    <label>Password:
+                        &nbsp;
+                        <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+                    </label>
+                    <label>Confirm:
+                        &nbsp;
+                        <input type="password" name="confirm" value={credentials.confirm} onChange={handleChange} required />
+                    </label>
+                    <label>Avatar URL:
+                        &nbsp;
+                        <input type="text" name="imgUrl" value={credentials.imgUrl} onChange={handleChange} required />
+                    </label>
+                    <button type="submit" disabled={disable} className={disable ? 'disabled' : ''}>SIGN UP</button>
+                    <p className="switchForms">Already have an account?
+                        &nbsp;
+                        <span onClick={() => setShowLogin(!showLogin)} className="switchLink">Log In</span>
+                    </p>
                 </form>
             </div>
             <p className="error-message">&nbsp;{error}</p>

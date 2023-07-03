@@ -1,6 +1,6 @@
 import ProfNames from '../ProfNames/ProfNames';
 import NewConvoPop from '../PopUps/NewConvoPop';
-import { getUser, logOut } from '../../utilities/users-service';
+import { logOut } from '../../utilities/users-service';
 import { getAllAvailable } from '../../utilities/users-api';
 import { useState, useEffect } from 'react';
 
