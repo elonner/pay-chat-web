@@ -1,0 +1,55 @@
+.newConvoPop {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    gap: 0.5rem;
+    /* width: 500px; */ 
+    /* position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    /* background-color: white;
+    z-index: 1;
+    border-radius: 10px;
+    border: 2px solid #9D8BCF;
+    filter: drop-shadow(0 0 5px #828282); */
+}
+
+.cancel {
+    color: #CA6262;
+    position: absolute;
+    right: 8px;
+    top: 14px;
+}
+
+.cancel:hover {
+    color: #ac5353;
+    cursor: pointer;
+}
+
+.newConvoPop h3 {
+    margin-top: 10px;
+    font-size: larger;
+    color: #4d4563;
+    font-weight: 500;
+}
+
+.selectUser {
+    width: 80%;
+}
+
+.newConvoPop button {
+    background-color: #67a185;
+    width: fit-content;
+    padding: 0 1rem;
+    align-self: center;
+    color: white;
+    border-radius: 3px;
+    font-size: large;
+}
+
+.newConvoPop button:hover {
+    cursor: pointer;
+}
