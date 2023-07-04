@@ -6,8 +6,7 @@ import ChatPage from './pages/ChatPage';
 import { getUser } from './utilities/users-service';
 import { getOne } from './utilities/users-api';
 
-// eslint-disable-next-line
-const socket = socketIO.connect('http://localhost:4000');
+const socket = socketIO.connect('https://unique-chat-app-46929d29620c.herokuapp.com');
 
 export default function App() {
   const [user, setUser] = useState(getUser());
