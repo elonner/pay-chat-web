@@ -26,7 +26,8 @@ export default function LoginForm({ setUser, showLogin, setShowLogin }) {
             const user = await usersService.login(credentials);
             setUser(user);
             navigate('/chat');
-        } catch {
+        } catch (err) {
+            console.log(err)
             setError('Log In Failed - Try Again');
         }
     }
