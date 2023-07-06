@@ -6,7 +6,7 @@ import ChatPage from './pages/ChatPage';
 import { getUser } from './utilities/users-service';
 import { getOne } from './utilities/users-api';
 
-const socket = socketIO.connect('https://unique-chat-app-46929d29620c.herokuapp.com');
+const socket = socketIO.connect(process.env.NODE_ENV === 'production' ? process.env.REACT_APP_SERVER_URL : 'http://localhost:4000');
 
 export default function App() {
   const [user, setUser] = useState(getUser());
